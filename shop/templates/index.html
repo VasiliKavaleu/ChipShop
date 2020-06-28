@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Home {% endblock %}
+
+{% block slider %}
+    <div id="slider-wrapper">
+        <div id="slider" class="nivoSlider">
+            <img src="{% static 'images/slider/02.jpg' %}" alt="" />
+            <a href="#"><img src="{% static 'images/slider/01.jpg' %}" alt="" title="This is an example of a caption" /></a>
+            <img src="{% static 'images/slider/03.jpg' %}" alt="" />
+            <img src="{% static 'images/slider/04.jpg' %}" width="600 px" height ="250 px" alt="" title="#htmlcaption" />
+        </div>
+        <div id="htmlcaption" class="nivo-html-caption">
+            <strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#">a link</a>.
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static 'js/jquery-1.4.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.nivo.slider.pack.js' %}"></script>
+    <script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider();
+    });
+    </script>
+    <div class="cleaner"></div>
+{% endblock %}
+
+{% block products %}
+    <div class="text-center"> <h1 class="decor text-center">Новые поступления</h1></div>
+
+
+
+    {% for product in products %}
+        <div class="product_box">
+            <h3>{{ product.name }}</h3>
+            {% if product.image %}
+                <a class="prod" href="{{ product.get_absolute_url }}"><img src="{{ product.image.url }}"   width="200 px" height ="150 px" alt="{{ product.name }}" /></a>
+            {% else %}
+                <a class="prod" href="{{ product.get_absolute_url }}"><img src="{% static 'image/no_image.png' %}" width="200 px" height ="150 px" alt="{{ product.name }}" /></a>
+            {% endif %}
+            <p>Short description</p>
+            <p class="product_price">{{ product.price }}</p>
+            <a href="shoppingcart.html" class="addtocart"></a>
+            <a href="{{ product.get_absolute_url }}" class="detail"></a>
+        </div>
+    {% endfor %}
+{% endblock %}

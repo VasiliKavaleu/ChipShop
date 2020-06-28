@@ -1,10 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% load static %}
 
-</body>
-</html>
+{% block title %}
+    {{ product.name }}
+{% endblock %}
+{% block detail_content %}
+
+        <div id="content" class="float_r">
+        	<h1>{{ product.name }}</h1>
+            <div class="content_half float_l">
+                {% if product.image %}
+                    <a class="prod" href="{{ product.get_absolute_url }}"><img src="{{ product.image.url }}"   width="200 px" height ="150 px" alt="{{ product.name }}" /></a>
+                {% else %}
+                    <a class="prod" href="{{ product.get_absolute_url }}"><img src="{% static 'image/no_image.png' %}" width="200 px" height ="150 px" alt="{{ product.name }}" /></a>
+                {% endif %}
+            </div>
+            <div class="content_half float_r">
+                <table>
+                    <tr>
+                        <td width="160">Цена:</td>
+                        <td>{{ product.price }}</td>
+                    </tr>
+                    <tr>
+                        <td>Availability:</td>
+                        <td>In Stock</td>
+                    </tr>
+                    <tr>
+                        <td>Model:</td>
+                        <td>Product 14</td>
+                    </tr>
+                    <tr>
+                        <td>Manufacturer:</td>
+                        <td>Apple</td>
+                    </tr>
+                    <tr>
+                    	<td>Quantity</td>
+                        <td><input type="text" value="1" style="width: 20px; text-align: right" /></td>
+                    </tr>
+                </table>
+                <div class="cleaner h20"></div>
+
+                <a href="shoppingcart.html" class="addtocart"></a>
+
+			</div>
+            <div class="cleaner h30"></div>
+
+            {% if product.description %}
+                <h5>Описание</h5>
+                <p>{{ product.description }}</p>
+            {% endif %}
+          <div class="cleaner h50"></div>
+        </div>
+
+{% endblock %}
+
+
+
+
+
+
+<!--    <div class="product-detail">-->
+<!--        {% if product.image %}-->
+<!--            <img src="{{ product.image.url }}">-->
+<!--        {% else %}-->
+<!--            <img src="{% static 'image/no_image.png' %}">-->
+<!--        {% endif %}-->
+<!--        <h1>{{ product.name }}</h1>-->
+<!--        <h2>-->
+<!--            <a href="{{ product.category.get_absolute_url }}">{{product.category }}</a>-->
+<!--        </h2>-->
+<!--        <p class="price">{{ product.price }}</p>-->
+<!--        {{ product.description|linebreaks }}-->
+<!--    </div>-->

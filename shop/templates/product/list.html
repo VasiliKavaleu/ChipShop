@@ -1,10 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% load static %}
 
-</body>
-</html>
+{% block title %}
+    {% if category %}{{ category.name }}{% else %}Products{% endif %}
+{% endblock %}
+
+{% block products %}
+    <h1 class="decor">{% if category %}{{ category.name }}{% else %}Продукция{% endif %}</h1>
+    {% for product in products %}
+        <div class="product_box">
+            <h3>{{ product.name }}</h3>
+            {% if product.image %}
+                <a class="prod" href="{{ product.get_absolute_url }}"><img src="{{ product.image.url }}"   width="200 px" height ="150 px" alt="{{ product.name }}" /></a>
+            {% else %}
+                <a class="prod" href="{{ product.get_absolute_url }}"><img src="{% static 'image/no_image.png' %}" width="200 px" height ="150 px" alt="{{ product.name }}" /></a>
+            {% endif %}
+            {% if product.available %}
+                <p>В наличии</p>
+            {% else %}
+                <p>Нет наличии</p>
+            {% endif %}
+            <p class="product_price">{{ product.price }} BYN</p>
+            <a href="shoppingcart.html" class="addtocart"></a>
+            <a href="{{ product.get_absolute_url }}" class="detail"></a>
+        </div>
+    {% endfor %}
+
+{% endblock %}
