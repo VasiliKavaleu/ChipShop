@@ -5,7 +5,6 @@
     {{ product.name }}
 {% endblock %}
 {% block detail_content %}
-
         <div id="content" class="float_r">
         	<h1>{{ product.name }}</h1>
             <div class="content_half float_l">
@@ -22,53 +21,46 @@
                         <td>{{ product.price }}</td>
                     </tr>
                     <tr>
-                        <td>Availability:</td>
-                        <td>In Stock</td>
+                        <td>Наличие:</td>
+                        {% if product.available %}
+                            <td>В наличии</td>
+                        {% else %}
+                            <td>Нет наличии</td>
+                        {% endif %}
                     </tr>
                     <tr>
-                        <td>Model:</td>
-                        <td>Product 14</td>
+                        <td>Категория:</td>
+                        <td>{{ product.category }}</td>
                     </tr>
                     <tr>
-                        <td>Manufacturer:</td>
-                        <td>Apple</td>
+                        <td>Артикул:</td>
+                        <td>{{ product.id }}</td>
                     </tr>
-                    <tr>
-                    	<td>Quantity</td>
-                        <td><input type="text" value="1" style="width: 20px; text-align: right" /></td>
-                    </tr>
-                </table>
-                <div class="cleaner h20"></div>
+<!--                    <tr>-->
+<!--                    	<td>Количество</td>-->
+<!--                        <td><input type="text" value="1" style="width: 20px; text-align: right" /></td>-->
+<!--                    </tr>-->
 
-                <a href="shoppingcart.html" class="addtocart"></a>
+                </table>
+<!--                <div class="cleaner h20"></div>-->
+                <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                    {{ cart_product_form }}
+                    {% csrf_token %}
+<!--                    <input type="submit" class="addtocart" >-->
+                    <div class="cleaner h20"></div>
+                    <a href="{% url 'cart:cart_add' product.id %}" class="addtocart"></a>
+                </form>
+<!--                <a href="{% url 'cart:cart_add' product.id %}" class="addtocart"></a>-->
 
 			</div>
             <div class="cleaner h30"></div>
 
             {% if product.description %}
-                <h5>Описание</h5>
-                <p>{{ product.description }}</p>
+                <h3>Описание</h3>
+                <blockquote>>{{ product.description }}</<blockquote>>
             {% endif %}
           <div class="cleaner h50"></div>
         </div>
-
 {% endblock %}
 
 
-
-
-
-
-<!--    <div class="product-detail">-->
-<!--        {% if product.image %}-->
-<!--            <img src="{{ product.image.url }}">-->
-<!--        {% else %}-->
-<!--            <img src="{% static 'image/no_image.png' %}">-->
-<!--        {% endif %}-->
-<!--        <h1>{{ product.name }}</h1>-->
-<!--        <h2>-->
-<!--            <a href="{{ product.category.get_absolute_url }}">{{product.category }}</a>-->
-<!--        </h2>-->
-<!--        <p class="price">{{ product.price }}</p>-->
-<!--        {{ product.description|linebreaks }}-->
-<!--    </div>-->

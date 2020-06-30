@@ -18,6 +18,6 @@
     color: steelblue;
       }
 
-.prod {
-
+.product_box:hover {
+    box-shadow: 0 0 5px rgba(0,9,90,0.5);
 }

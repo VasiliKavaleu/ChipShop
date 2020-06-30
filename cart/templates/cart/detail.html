@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Корзина{% endblock %}
+{% block block_cart %}
+
+        <div id="content" class="float_r">
+            {% if cart %}
+                <h1 class="decor">Корзина</h1>
+                <table width="680px" cellspacing="0" cellpadding="5">
+                          <tr bgcolor="#ddd">
+                                <th width="220" align="left">Изображение </th>
+                                <th width="180" align="left">Наименование </th>
+                                <th width="100" align="center">Количество </th>
+                                <th width="60" align="right">Цена </th>
+                                <th width="60" align="right">Сумма </th>
+                                <th width="90"> </th>
+                          </tr>
+                            {% for item in cart %}
+                                {% with product=item.product %}
+                                    <tr>
+                                        <td>
+                                            <a href="{{ product.get_absolute_url }}">
+                                                {% if product.image %}
+                                                    <img src="{{ product.image.url }}" width="150 px" height ="120 px">
+                                                {% else %}
+                                                    <img src="{% static 'image/no_image.png' %}" width="150 px" height ="100 px">
+                                                {% endif %}
+                                            </a>
+                                        </td>
+                                        <td>{{ product.name }}</td>
+                                        <td>
+                                            <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                                                {{ item.update_quantity_form.quantity }}
+                                                {{ item.update_quantity_form.update }}
+                                                <input type="submit" value="Добавить">
+                                                {% csrf_token %}
+                                            </form>
+                                        </td>
+                                        <td align="right">{{ item.price }}</td>
+                                        <td align="right">{{ item.total_price }}</td>
+                                        <td align="center"> <a href="{% url 'cart:cart_remove' product.id%}"><img src="{% static 'images/remove_x.gif' %}" alt="remove" /><br />Удалить</a> </td>
+                                    </tr>
+
+                                {% endwith %}
+                            {% endfor %}
+
+
+                            <tr>
+                                <td colspan="3" align="right"  height="30px">Have you modified your basket? Please click here to <a href="shoppingcart.html"><strong>Update</strong></a>&nbsp;&nbsp;</td>
+                                <td align="right" style="background:#ddd; font-weight:bold"> Всего </td>
+                                <td align="right" style="background:#ddd; font-weight:bold">{{ cart.get_total_price }} </td>
+                                <td style="background:#ddd; font-weight:bold"> </td>
+                            </tr>
+                        </table>
+                        <div style="float:right; width: 215px; margin-top: 20px;">
+
+                        <p><a href="#">К оформлению</a></p>
+                        <p><a href="javascript:history.back()">Вернуться к покупкам</a></p>
+
+                        </div>
+            {% else %}
+                <h1 class="decor">Ваша корзина пуста.</h1>
+            {% endif %}
+        </div>
+
+        <div class="cleaner"></div>
+
+{% endblock %}

@@ -21,9 +21,8 @@
                 <p>Нет наличии</p>
             {% endif %}
             <p class="product_price">{{ product.price }} BYN</p>
-            <a href="shoppingcart.html" class="addtocart"></a>
+            <a href="{% url 'cart:cart_add' product.id %}" class="addtocart"></a>
             <a href="{{ product.get_absolute_url }}" class="detail"></a>
         </div>
     {% endfor %}
-
 {% endblock %}

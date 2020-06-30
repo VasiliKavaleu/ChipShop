@@ -38,7 +38,13 @@
         	<p>
 	         <a href="#"> Войти в профиль</a> | <a href="#"> Регистрация</a> | <a href="#">Выйти</a></p>
             <p>
-            	В корзине <strong>0 товаров</strong> ( <a href="shoppingcart.html">Корзина</a> )
+                {% with total_items=cart|length %}
+                    {% if cart|length > 0 %}
+            	        В корзине <strong>{{ total_items }} товар(ов)</strong>, {{ cart.get_total_price }} BYN ( <a href="{% url 'cart:cart_detail' %}">Корзина</a> )
+                    {% else %}
+                        В корзине <strong>0 товар(ов)</strong>( <a href="{% url 'cart:cart_detail' %}">Корзина</a> )
+                    {% endif %}
+                {% endwith %}
 			</p>
 		</div>
         <div class="cleaner"></div>
@@ -149,6 +155,9 @@
 <!--            </script>-->
 
             {% block products %}
+            {% endblock %}
+
+            {% block block_cart %}
             {% endblock %}
 
             {% block detail_content %}
