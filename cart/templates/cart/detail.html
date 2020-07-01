@@ -3,7 +3,6 @@
 
 {% block title %}Корзина{% endblock %}
 {% block block_cart %}
-
         <div id="content" class="float_r">
             {% if cart %}
                 <h1 class="decor">Корзина</h1>
@@ -41,10 +40,8 @@
                                         <td align="right">{{ item.total_price }}</td>
                                         <td align="center"> <a href="{% url 'cart:cart_remove' product.id%}"><img src="{% static 'images/remove_x.gif' %}" alt="remove" /><br />Удалить</a> </td>
                                     </tr>
-
                                 {% endwith %}
                             {% endfor %}
-
 
                             <tr>
                                 <td colspan="3" align="right"  height="30px">Have you modified your basket? Please click here to <a href="shoppingcart.html"><strong>Update</strong></a>&nbsp;&nbsp;</td>
@@ -55,7 +52,7 @@
                         </table>
                         <div style="float:right; width: 215px; margin-top: 20px;">
 
-                        <p><a href="#">К оформлению</a></p>
+                        <p><a href="{% url 'orders:order_create' %}">К оформлению</a></p>
                         <p><a href="javascript:history.back()">Вернуться к покупкам</a></p>
 
                         </div>
@@ -63,7 +60,5 @@
                 <h1 class="decor">Ваша корзина пуста.</h1>
             {% endif %}
         </div>
-
         <div class="cleaner"></div>
-
 {% endblock %}

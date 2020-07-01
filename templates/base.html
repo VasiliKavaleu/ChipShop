@@ -33,16 +33,18 @@
 <div id="templatemo_wrapper">
 
 	<div id="templatemo_header">
-    	<div id="site_title"><h1><a href="#">Online Ship Store</a></h1></div>
+    	<div id="site_title"><h1>
+            <a href="#"></a>
+        </h1></div>
         <div id="header_right">
         	<p>
-	         <a href="#"> Войти в профиль</a> | <a href="#"> Регистрация</a> | <a href="#">Выйти</a></p>
+<!--	         <a href="#"> Войти в профиль</a> | <a href="#"> Регистрация</a> | <a href="#">Выйти</a></p>-->
             <p>
                 {% with total_items=cart|length %}
                     {% if cart|length > 0 %}
-            	        В корзине <strong>{{ total_items }} товар(ов)</strong>, {{ cart.get_total_price }} BYN ( <a href="{% url 'cart:cart_detail' %}">Корзина</a> )
+            	        <h5>В корзине <strong>{{ total_items }} товар(ов)</strong>, {{ cart.get_total_price }} BYN ( <a href="{% url 'cart:cart_detail' %}">Корзина</a> )</h5>
                     {% else %}
-                        В корзине <strong>0 товар(ов)</strong>( <a href="{% url 'cart:cart_detail' %}">Корзина</a> )
+                        <h5>В корзине <strong>0 товар(ов)</strong>( <a href="{% url 'cart:cart_detail' %}">Корзина</a> )</h5>
                     {% endif %}
                 {% endwith %}
 			</p>
@@ -53,8 +55,10 @@
     <div id="templatemo_menubar">
     	<div id="top_nav" class="ddsmoothmenu">
             <ul>
-                <li><a href="{% url 'shop:index' %}" class="selected">Главная</a></li>
-                <li><a href="{% url 'shop:product_list' %}">Продукция</a>
+                {% url 'shop:index' as index %}
+                {% url 'shop:product_list' as product_list %}
+                <li><a href="{% url 'shop:index' %}" class="{% if request.path == index %}selected{% endif %}">Главная</a></li>
+                <li><a href="{% url 'shop:product_list' %}" class="{% if request.path == product_list %}selected{% endif %}">Продукция</a>
 <!--                    <ul>-->
 <!--                        <li><a href="#submenu1">Sub menu 1</a></li>-->
 <!--                        <li><a href="#submenu2">Sub menu 2</a></li>-->
@@ -63,15 +67,20 @@
 <!--                        <li><a href="#submenu5">Sub menu 5</a></li>-->
 <!--                  </ul>-->
                 </li>
-                <li><a href="#">Доставка и оплата</a>
+                {% url 'shop:delivery' as delivery %}
+                {% url 'shop:payment' as payment %}
+                {% url 'shop:returning' as returning %}
+                <li><a href="#" class="{% if request.path == delivery or request.path == payment or request.path == returning %}selected{% endif %}">Доставка и оплата</a>
                     <ul>
-                        <li><a href="{% url 'shop:delivery' %}">Доставка</a></li>
-                        <li><a href="{% url 'shop:payment' %}">Оплата</a></li>
-                        <li><a href="{% url 'shop:returning' %}">Гарантии и возврат</a></li>
+
+                        <li><a href="{% url 'shop:delivery' %}" >Доставка</a></li>
+                        <li><a href="{% url 'shop:payment' %}" >Оплата</a></li>
+                        <li><a href="{% url 'shop:returning' %}" >Гарантии и возврат</a></li>
                   </ul>
                 </li>
-                <li><a href="{% url 'shop:about' %}">О нас</a></li>
-                <li><a href="checkout.html">Checkout</a></li>
+                {% url 'shop:about' as about %}
+                <li><a href="{% url 'shop:about' %}" class="{% if request.path == about %}selected{% endif %}">О нас</a></li>
+<!--                <li><a href="checkout.html" >Checkout</a></li>-->
 <!--                <li><a href="contact.html">Contact Us</a></li>-->
             </ul>
             <br style="clear: left" />
@@ -98,8 +107,6 @@
                     </ul>
                 </div>
             </div>
-
-
 
             <div class="sidebar_box"><span class="bottom"></span>
             	<h3>Bestsellers </h3>
@@ -153,6 +160,8 @@
 <!--                $('#slider').nivoSlider();-->
 <!--            });-->
 <!--            </script>-->
+            {% block content %}
+            {% endblock %}
 
             {% block products %}
             {% endblock %}
@@ -165,6 +174,7 @@
 
             {% block about %}
             {% endblock %}
+
 <!--            <h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>-->
 <!--            {% for product in products %}-->
 <!--                <div class="product_box">-->
@@ -238,7 +248,7 @@
     	<p><a href="#">Home</a> | <a href="#">Products</a> | <a href="#">About</a> | <a href="#">FAQs</a> | <a href="#">Checkout</a> | <a href="#">Contact Us</a>
 		</p>
 
-    	Copyright © 2072 <a href="#">Your Company Name</a> <!-- Credit: www.templatemo.com --></div> <!-- END of templatemo_footer -->
+    	Copyright © 2020 <a href="#">vasiliy.kavaleu@gmail.com</a> </div> <!-- END of templatemo_footer -->
 
 </div> <!-- END of templatemo_wrapper -->
 </div> <!-- END of templatemo_body_wrapper -->
