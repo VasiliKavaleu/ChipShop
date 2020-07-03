@@ -1,11 +1,12 @@
-{% extends "base.html" %}
+{% extends "initial_base.html" %}
 {% load static %}
 
 {% block title %}Корзина{% endblock %}
+
 {% block block_cart %}
-        <div id="content" class="float_r">
+<!--        <div id="content" class="float_r">-->
             {% if cart %}
-                <h1 class="decor">Корзина</h1>
+                <h1 class="decor cart">Корзина</h1>
                 <table width="680px" cellspacing="0" cellpadding="5">
                           <tr bgcolor="#ddd">
                                 <th width="220" align="left">Изображение </th>
@@ -33,12 +34,13 @@
                                                 {{ item.update_quantity_form.quantity }}
                                                 {{ item.update_quantity_form.update }}
                                                 <input type="submit" value="Добавить">
+<!--                                                    <input type="image" class="in" src="{% static 'images/update.png' %}" width="40 px" height ="40 px" border="0" alt="Submit" />-->
                                                 {% csrf_token %}
                                             </form>
                                         </td>
                                         <td align="right">{{ item.price }}</td>
                                         <td align="right">{{ item.total_price }}</td>
-                                        <td align="center"> <a href="{% url 'cart:cart_remove' product.id%}"><img src="{% static 'images/remove_x.gif' %}" alt="remove" /><br />Удалить</a> </td>
+                                        <td align="center"> <a href="{% url 'cart:cart_remove' product.id%}"><img src="{% static 'images/delete.png' %}" alt="remove" /><br />Удалить</a> </td>
                                     </tr>
                                 {% endwith %}
                             {% endfor %}
@@ -57,8 +59,13 @@
 
                         </div>
             {% else %}
-                <h1 class="decor">Ваша корзина пуста.</h1>
+                <div class="empty_cart">
+                    <h1 class="decor cart">Ваша корзина пуста.</h1>
+                    <img src="{% static 'images/empty.png' %}" class="empty" alt="empty">
+                </div>
             {% endif %}
-        </div>
+<!--        </div>-->
         <div class="cleaner"></div>
 {% endblock %}
+
+

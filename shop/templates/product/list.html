@@ -6,8 +6,8 @@
 {% endblock %}
 {% block active %} selected {% endblock %}
 
-{% block products %}
-    <h1 class="decor">{% if category %}{{ category.name }}{% else %}Продукция{% endif %}</h1>
+{% block content %}
+    <h1 class="decor list">{% if category %}{{ category.name }}{% else %}Все товары нашего каталога{% endif %}</h1>
     {% for product in products %}
         <div class="product_box">
             <h3>{{ product.name }}</h3>
@@ -25,7 +25,7 @@
 <!--            <a href="{% url 'cart:cart_add' product.id %}" class="addtocart"></a>-->
 <!--            <a href="{{ product.get_absolute_url }}" class="detail"></a>-->
             <a href="{% url 'cart:cart_add' product.id %}">
-                <img src="{% static 'images/cart.png' %}" class="cart"  width="30 px" height ="30 px"  alt="Add to cart">
+                <img src="{% static 'images/cart2.png' %}" class="cart"  width="30 px" height ="30 px"  alt="Add to cart">
             </a>
         </div>
     {% endfor %}

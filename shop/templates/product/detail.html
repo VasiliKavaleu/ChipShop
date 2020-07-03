@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}
-    {{ product.name }}
-{% endblock %}
-{% block detail_content %}
+{% block title %} {{ product.name }} {% endblock %}
+
+{% block content %}
         <div id="content" class="float_r">
         	<h1>{{ product.name }}</h1>
             <div class="content_half float_l">
@@ -36,13 +35,8 @@
                         <td>Артикул:</td>
                         <td>{{ product.id }}</td>
                     </tr>
-<!--                    <tr>-->
-<!--                    	<td>Количество</td>-->
-<!--                        <td><input type="text" value="1" style="width: 20px; text-align: right" /></td>-->
-<!--                    </tr>-->
-
                 </table>
-<!--                <div class="cleaner h20"></div>-->
+
                 <form action="{% url 'cart:cart_add' product.id %}" method="post">
                     {{ cart_product_form }}
                     {% csrf_token %}
@@ -50,10 +44,8 @@
                     <input type="submit" value="Добавить в корзину">
                 </form>
 
-
 			</div>
             <div class="cleaner h30"></div>
-
             {% if product.description %}
                 <h3>Описание</h3>
                 <blockquote>>{{ product.description }}</<blockquote>>

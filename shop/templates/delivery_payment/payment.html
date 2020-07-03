@@ -2,3 +2,21 @@
 {% load static %}
 
 {% block title %} Оплата {% endblock %}
+
+{% block content %}
+    <div id="content" class="float_r">
+        <h3>Оплата</h3>
+        <div class="cleaner"></div>
+            <blockquote>
+                <h4>Оплата через систему ЕРИП</h4>
+                Оплатить заказ можно через систему ЕРИП.
+                <br>Данный способ оплаты возможен в любом банке, отделении банка, отделении связи, инфокиоск, а также через интернет банкинг.
+                <br>Для оплаты зайдите в систему ЕРИП и следуйте дальнейшей схеме :
+                <br>>>>> Система ЕРИП >>>> Прочие платежи >>>> Товары, работы и услуги >>>> г.Минск >>>> ChipStore
+                <br>
+                <br>Комиссия: 0%
+                <div class="cleaner h20"></div>
+            </blockquote>
+        <img src="{% static 'images/payment.png' %}" class="payment" alt="payment">
+    </div>
+{% endblock %}

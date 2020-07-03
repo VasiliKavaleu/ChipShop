@@ -1,3 +1,7 @@
+div#templatemo_main {
+    min-height: calc(100vh - 80px);
+}
+
 .decor {
   text-shadow: -1px -1px #FFF,
                -2px -2px #FFF,
@@ -62,11 +66,15 @@ form p input {
 
 a.button, input[type="submit"] {
     color:#fff;
-    background:#5993bb;
+    background:#665f5f;
     border-radius:4px;
     padding:10px 20px;
     font-size:14px;
     border:0;
+}
+
+input[type="submit"]:hover {
+    background-color: #056873;
 }
 
 .order-info {
@@ -87,3 +95,107 @@ a.button, input[type="submit"] {
     float:right;
 }
 
+
+input[type="image"]:hover {
+    box-shadow: 0 0 4px green;
+    border-radius: 10px;
+}
+
+h1.decor {
+    padding-left: 250px;
+}
+
+
+.decor.cart {
+  padding-left: 300px;
+}
+
+
+h1.decor.list {
+  padding-left: 150px;
+}
+
+
+img.empty {
+    margin-left: 200px;
+}
+
+
+img.payment {
+    margin-left: 250px;
+}
+
+
+/*Product detail*/
+label {
+    font-size: larger;
+    margin-left: 9px;
+    margin-right: 100px;
+}
+
+
+
+/*table.cart {
+    margin-bottom: 40px;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+table.cart img {
+    width: 180px;
+}
+
+table th, table td {
+    text-align: left;
+    font-size: 14px;
+    padding: 10px;
+    margin: 0;
+}*/
+
+
+
+/*Cart*/
+
+table {
+    width:100%;
+    border-spacing:0;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    text-align:left;
+    font-size:14px;
+    padding:10px;
+    margin:0;
+}
+
+tbody tr:nth-child(odd) {
+    background:#efefef;
+}
+
+thead th, tbody tr.total {
+    background:#5993bb;
+    color:#fff;
+    font-weight:bold;
+}
+
+table.cart {
+    margin-bottom:40px;
+}
+
+table.cart img {
+    width:180px;
+}
+
+tbody td.num {
+    text-align:right;
+}
+
+td input[type="submit"] {
+    font-size:12px;
+    padding:4px 10px;
+}
