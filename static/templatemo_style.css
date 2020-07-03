@@ -19,7 +19,8 @@ body {
 
 a, a:link, a:visited { color: #0299aa; font-weight: normal; text-decoration: none }
 a:hover { text-decoration: underline; }
-
+/*
+templatemo_addtocart*/
 a.addtocart{ display: inline-block; width: 80px; height: 21px; line-height: 21px; text-align: center; font-size: 10px; font-weight: bold; color: #333; background: url(images/templatemo_addtocart.png) }
 a.detail{ display: inline-block; width: 64px; height: 20px; line-height: 20px; text-align: center; font-size: 10px; font-weight: bold; color: #333; background: url(images/templatemo_detail.png) }
 

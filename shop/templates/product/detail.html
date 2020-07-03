@@ -46,11 +46,10 @@
                 <form action="{% url 'cart:cart_add' product.id %}" method="post">
                     {{ cart_product_form }}
                     {% csrf_token %}
-<!--                    <input type="submit" class="addtocart" >-->
                     <div class="cleaner h20"></div>
-                    <a href="{% url 'cart:cart_add' product.id %}" class="addtocart"></a>
+                    <input type="submit" value="Добавить в корзину">
                 </form>
-<!--                <a href="{% url 'cart:cart_add' product.id %}" class="addtocart"></a>-->
+
 
 			</div>
             <div class="cleaner h30"></div>

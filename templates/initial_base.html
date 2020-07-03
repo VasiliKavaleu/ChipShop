@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load static %}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{% block title %}Chip Shop{% endblock %}</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="{% static 'templatemo_style.css' %}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{% static 'nivo-slider.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ddsmoothmenu.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/additional.css' %}" />
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/ddsmoothmenu.js' %}"></script>
+    <script type="text/javascript">
+
+    ddsmoothmenu.init({
+        mainmenuid: "top_nav", //menu DIV id
+        orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
+        classname: 'ddsmoothmenu', //class added to menu's outer DIV
+        //customtheme: ["#1c5a80", "#18374a"],
+        contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
+    })
+    </script>
+</head>
+
+<body>
+
+<div id="templatemo_body_wrapper">
+<div id="templatemo_wrapper">
+
+	<div id="templatemo_header">
+    	<div id="site_title"><h1>
+            <a href="#"></a>
+        </h1></div>
+        <div id="header_right">
+        	<p>
+<!--	         <a href="#"> Войти в профиль</a> | <a href="#"> Регистрация</a> | <a href="#">Выйти</a></p>-->
+            <p>
+                {% with total_items=cart|length %}
+                    {% if cart|length > 0 %}
+            	        <h5>В корзине <strong>{{ total_items }} товар(ов)</strong>, {{ cart.get_total_price }} BYN ( <a href="{% url 'cart:cart_detail' %}">Корзина</a> )</h5>
+                    {% else %}
+                        <h5>В корзине <strong>0 товар(ов)</strong>( <a href="{% url 'cart:cart_detail' %}">Корзина</a> )</h5>
+                    {% endif %}
+                {% endwith %}
+			</p>
+		</div>
+        <div class="cleaner"></div>
+    </div> <!-- END of templatemo_header -->
+
+    <div id="templatemo_menubar">
+    	<div id="top_nav" class="ddsmoothmenu">
+            <ul>
+                {% url 'shop:index' as index %}
+                {% url 'shop:product_list' as product_list %}
+                <li><a href="{% url 'shop:index' %}" class="{% if request.path == index %}selected{% endif %}">Главная</a></li>
+                <li><a href="{% url 'shop:product_list' %}" class="{% if request.path == product_list %}selected{% endif %}">Продукция</a>
+                </li>
+                {% url 'shop:delivery' as delivery %}
+                {% url 'shop:payment' as payment %}
+                {% url 'shop:returning' as returning %}
+                <li><a href="#" class="{% if request.path == delivery or request.path == payment or request.path == returning %}selected{% endif %}">Доставка и оплата</a>
+                    <ul>
+
+                        <li><a href="{% url 'shop:delivery' %}" >Доставка</a></li>
+                        <li><a href="{% url 'shop:payment' %}" >Оплата</a></li>
+                        <li><a href="{% url 'shop:returning' %}" >Гарантии и возврат</a></li>
+                  </ul>
+                </li>
+                {% url 'shop:about' as about %}
+                <li><a href="{% url 'shop:about' %}" class="{% if request.path == about %}selected{% endif %}">О нас</a></li>
+<!--                <li><a href="checkout.html" >Checkout</a></li>-->
+<!--                <li><a href="contact.html">Contact Us</a></li>-->
+            </ul>
+            <br style="clear: left" />
+        </div> <!-- end of ddsmoothmenu -->
+        <div id="templatemo_search">
+            <form action="#" method="get">
+              <input type="text" value=" " name="keyword" id="keyword" title="keyword" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
+              <input type="submit" name="Search" value=" " alt="Search" id="searchbutton" title="Search" class="sub_btn"  />
+            </form>
+        </div>
+    </div> <!-- END of templatemo_menubar -->
+
+    <div id="templatemo_main">
+    	<div id="sidebar" class="float_l">
+
+        </div>
+
+        <div id="content" class="float_r">
+            {% block slider %}
+            {% endblock %}
+
+            {% block content %}
+            {% endblock %}
+
+            {% block products %}
+            {% endblock %}
+
+            {% block block_cart %}
+            {% endblock %}
+
+            {% block detail_content %}
+            {% endblock %}
+
+            {% block about %}
+            {% endblock %}
+
+            <div class="cleaner"></div>
+        </div>
+        <div class="cleaner"></div>
+    </div> <!-- END of templatemo_main -->
+
+    <div id="templatemo_footer">
+    	<p><a href="#">Home</a> | <a href="#">Products</a> | <a href="#">About</a> | <a href="#">FAQs</a> | <a href="#">Checkout</a> | <a href="#">Contact Us</a>
+		</p>
+
+    	Copyright © 2020 <a href="#">vasiliy.kavaleu@gmail.com</a> </div> <!-- END of templatemo_footer -->
+
+</div> <!-- END of templatemo_wrapper -->
+</div> <!-- END of templatemo_body_wrapper -->
+
+</body>
+</html>

@@ -21,3 +21,69 @@
 .product_box:hover {
     box-shadow: 0 0 5px rgba(0,9,90,0.5);
 }
+
+img.cart: {
+  width: 30 px;
+  height: 30 px;
+  
+}
+
+
+img.cart:hover {
+    box-shadow: 0 0 5px green;
+    border-radius: 10px;
+
+}
+
+.order-form {
+    float: left;
+}
+
+form p label, form p input {
+    float:left;
+    clear:both;
+}
+
+form p label {
+    font-size:14px;
+    padding-bottom:4px;
+}
+
+form p input {
+    width:300px;
+    font-size:13px;
+    margin-bottom:10px;
+    padding:10px 12px;
+    border:0;
+    background:#efefef;
+    color:#666;
+    border-radius:4px;
+}
+
+a.button, input[type="submit"] {
+    color:#fff;
+    background:#5993bb;
+    border-radius:4px;
+    padding:10px 20px;
+    font-size:14px;
+    border:0;
+}
+
+.order-info {
+    float:right;
+    width:300px;
+    background:#efefef;
+    padding:10px 20px;
+    color:#333;
+    border-bottom:4px solid #5993bb;
+}
+
+.order-info h3 {
+    color:#5993bb;
+}
+
+.order-info p {
+    font-weight:bold;
+    float:right;
+}
+

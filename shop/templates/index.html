@@ -45,8 +45,11 @@
                 <p>Нет наличии</p>
             {% endif %}
             <p class="product_price">{{ product.price }}</p>
-            <a href="{% url 'cart:cart_add' product.id %}" class="addtocart"></a>
-            <a href="{{ product.get_absolute_url }}" class="detail"></a>
+<!--            <a href="{% url 'cart:cart_add' product.id %}" class="addtocart"></a>-->
+<!--            <a href="{{ product.get_absolute_url }}" class="detail"></a>-->
+            <a href="{% url 'cart:cart_add' product.id %}">
+                <img src="{% static 'images/cart.png' %}" class="cart"  width="30 px" height ="30 px"  alt="Add to cart">
+            </a>
         </div>
     {% endfor %}
 {% endblock %}
