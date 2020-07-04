@@ -29,4 +29,33 @@
             </a>
         </div>
     {% endfor %}
+     <div class="cleaner"></div>
+    {% if is_qs_paginated %}
+        <div class="center">
+            <div class="pagination">
+                {% if not prev_page %}
+                    <a class="dis">&laquo;</a>
+                {% else %}
+                    <a href="{{ prev_page }}" >&laquo;</a>
+                {% endif %}
+                {% for n in products.paginator.page_range %}
+                    {% if products.number == n %}
+                        <a href="?page={{ n }}" class="active">{{ n }}</a>
+                    {% elif n > products.number|add:-3 and n < products.number|add:3 %}
+                        <a href="?page={{ n }}">{{ n }}</a>
+                    {% endif %}
+                {% endfor %}
+                {% if not next_page %}
+                    <a class="dis">&raquo;</a>
+                {% else %}
+                    <a href="{{ next_page }}">&raquo;</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="cleaner"></div>
+    {% endif %}
+
+
+
+
 {% endblock %}
