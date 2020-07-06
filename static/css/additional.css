@@ -34,7 +34,7 @@ img.cart: {
 
 
 img.cart:hover {
-    box-shadow: 0 0 5px green;
+    box-shadow: 0 0 5px grey;
     border-radius: 10px;
 
 }

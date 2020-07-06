@@ -67,17 +67,17 @@
                             <li><a href="{% url 'shop:payment' %}" >Оплата</a></li>
                       </ul>
                     </li>
-                    {% url 'shop:about' as about %}
-                    <li><a href="{% url 'shop:about' %}" class="{% if request.path == about %}selected{% endif %}">О нас</a></li>
+                    {% url 'shop:about_us' as about %}
+                    <li><a href="{% url 'shop:about_us' %}" class="{% if request.path == about %}selected{% endif %}">О нас</a></li>
     <!--                <li><a href="checkout.html" >Checkout</a></li>-->
     <!--                <li><a href="contact.html">Contact Us</a></li>-->
                 </ul>
                 <br style="clear: left" />
             </div> <!-- end of ddsmoothmenu -->
             <div id="templatemo_search">
-                <form action="#" method="get">
-                  <input type="text" value=" " name="keyword" id="keyword" title="keyword" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
-                  <input type="submit" name="Search" value=" " alt="Search" id="searchbutton" title="Search" class="sub_btn"  />
+                <form action="{% url 'shop:search_results' %}" method="get">
+                  <input type="text" value="" name="keyword" id="keyword" title="keyword" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
+                  <input type="submit" name="Search" value="" alt="Search" id="searchbutton" title="Search" class="sub_btn"  />
                 </form>
             </div>
         </div> <!-- END of templatemo_menubar -->
@@ -102,7 +102,7 @@
         </div> <!-- END of templatemo_main -->
 
     <div id="templatemo_footer">
-    	<p><a href="{% url 'shop:index' %}">Главная</a> | <a href="{% url 'shop:product_list' %}">Продукция</a> | <a href="{% url 'shop:about' %}">О нас</a>
+    	<p><a href="{% url 'shop:index' %}">Главная</a> | <a href="{% url 'shop:product_list' %}">Продукция</a> | <a href="{% url 'shop:about_us' %}">О нас</a>
 		</p>
 
     	Copyright © 2020 <a href="#">vasiliy.kavaleu@gmail.com</a> </div> <!-- END of templatemo_footer -->
