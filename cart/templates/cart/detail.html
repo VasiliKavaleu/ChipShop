@@ -40,7 +40,7 @@
                                         </td>
                                         <td align="right">{{ item.price }}</td>
                                         <td align="right">{{ item.total_price }}</td>
-                                        <td align="center"> <a href="{% url 'cart:cart_remove' product.id%}"><img src="{% static 'images/delete.png' %}" alt="remove" /><br />Удалить</a> </td>
+                                        <td align="center"> <a href="{% url 'cart:cart_remove' product.id%}"><img src="{% static 'images/delete.png' %}" class="remove" alt="remove" /><br />Удалить</a> </td>
                                     </tr>
                                 {% endwith %}
                             {% endfor %}
@@ -51,8 +51,50 @@
                                 <td align="right" style="background:#ddd; font-weight:bold">{{ cart.get_total_price }} </td>
                                 <td style="background:#ddd; font-weight:bold"> </td>
                             </tr>
+
+                            {% if cart.coupon %}
+                                <tr class="subtotal">
+                                    <td>Всего</td>
+                                    <td colspan="4"></td>
+                                    <td class="num">{{ cart.get_total_price|floatformat:"2" }}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Купон "{{ cart.coupon.code }}"
+                                        (- {{ cart.coupon.discount }}%)
+                                    </td>
+                                    <td colspan="4"></td>
+                                    <td class="num neg">
+                                    - {{ cart.get_discount|floatformat:"2" }}
+                                    </td>
+                                </tr>
+                            {% endif %}
+                            <tr class="total">
+                                <td>Итог</td>
+                                <td colspan="4"></td>
+                                <td class="num">
+                                {{ cart.get_total_price_after_discount|floatformat:"2" }} BYN
+                                </td>
+                            </tr>
+
+
+
+
                         </table>
-                        <div style="float:right; width: 215px; margin-top: 20px;">
+                        <div class="cleaner h20"></div>
+<!--                        <p>Apply a coupon:</p>-->
+                        <div class="coupons">
+                            <form action="{% url 'coupons:apply' %}" method="post">
+                                {{ coupon_apply_form }}
+                                <input type="submit" value="Применить">
+                                {% csrf_token %}
+                            </form>
+                        </div>
+
+
+
+
+                        <div style="float:right; width: 215px; ">
 
                         <p><a href="{% url 'orders:order_create' %}">К оформлению</a></p>
                         <p><a href="javascript:history.back()">Вернуться к покупкам</a></p>

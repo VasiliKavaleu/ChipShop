@@ -83,11 +83,11 @@ input[type="submit"]:hover {
     background:#efefef;
     padding:10px 20px;
     color:#333;
-    border-bottom:4px solid #5993bb;
+    border-bottom:4px solid #0299aa;
 }
 
 .order-info h3 {
-    color:#5993bb;
+    color:#0299aa;
 }
 
 .order-info p {
@@ -126,6 +126,10 @@ img.payment {
 }
 
 
+.coupons {
+    float: left;
+}
+
 /*Product detail*/
 label {
     font-size: larger;
@@ -135,26 +139,9 @@ label {
 
 
 
-/*table.cart {
-    margin-bottom: 40px;
+input#id_code {
+    height: 29px;
 }
-
-table {
-    width: 100%;
-    border-spacing: 0;
-    border-collapse: collapse;
-}
-
-table.cart img {
-    width: 180px;
-}
-
-table th, table td {
-    text-align: left;
-    font-size: 14px;
-    padding: 10px;
-    margin: 0;
-}*/
 
 
 
@@ -178,7 +165,7 @@ tbody tr:nth-child(odd) {
 }
 
 thead th, tbody tr.total {
-    background:#5993bb;
+    background:#999;
     color:#fff;
     font-weight:bold;
 }
