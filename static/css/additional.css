@@ -3,7 +3,7 @@ div#templatemo_main {
 }
 
 .decor {
-  text-shadow: -1px -1px #FFF,
+/*  text-shadow: -1px -1px #FFF,
                -2px -2px #FFF,
                -1px 1px #FFF,
                -2px 2px #FFF,
@@ -14,13 +14,16 @@ div#templatemo_main {
                -3px -3px 2px #BBB,
                -3px 3px 2px #BBB,
                3px 3px 2px #BBB,
-               3px -3px 2px #BBB;
+               3px -3px 2px #BBB;*/
   color: #696969;
   transition: all 1s;
   }
   .decor:hover {
     color: steelblue;
       }
+
+
+
 
 .product_box:hover {
     box-shadow: 0 0 5px rgba(0,9,90,0.5);
@@ -33,15 +36,26 @@ img.cart: {
 }
 
 
+
 img.cart:hover {
     box-shadow: 0 0 5px grey;
     border-radius: 10px;
 
 }
 
+label.redirect_copy {
+    min-width: 200px;
+}
+
 .order-form {
     float: left;
 }
+
+input#id_copy {
+    width: 13px;
+    clear: inherit;
+}
+
 
 form p label, form p input {
     float:left;
@@ -101,9 +115,9 @@ input[type="image"]:hover {
     border-radius: 10px;
 }
 
-h1.decor {
+/*h1.decor {
     padding-left: 250px;
-}
+}*/
 
 
 .decor.cart {
@@ -111,9 +125,9 @@ h1.decor {
 }
 
 
-h1.decor.list {
+/*h1.decor.list {
   padding-left: 150px;
-}
+}*/
 
 
 img.empty {
@@ -129,6 +143,39 @@ img.payment {
 .coupons {
     float: left;
 }
+
+
+input[type="submit"] {
+    width: 70px;
+}
+
+input.order_btn {
+    width: 323px;
+}
+
+input.apply_coupon {
+    width: 120px;
+}
+
+label.coupons_label {
+    margin-right: 10px;
+}
+
+input#submit {
+    width: 100px;
+}
+
+textarea#id_message {
+    width: 300px;
+    font-size: 13px;
+    margin-bottom: 10px;
+    padding: 10px 12px;
+    border: 0;
+    background: #efefef;
+    color: #666;
+    border-radius: 4px;
+}
+
 
 /*Product detail*/
 label {
@@ -216,4 +263,8 @@ a.dis {
 
 .center {
   text-align: center;
+}
+
+input.add_to_cart {
+    width: 200px;
 }

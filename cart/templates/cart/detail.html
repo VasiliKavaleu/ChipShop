@@ -45,35 +45,48 @@
                                 {% endwith %}
                             {% endfor %}
 
-                            <tr>
-                                <td colspan="3" align="right"  height="30px">Have you modified your basket? Please click here to <a href="shoppingcart.html"><strong>Update</strong></a>&nbsp;&nbsp;</td>
-                                <td align="right" style="background:#ddd; font-weight:bold"> Всего </td>
-                                <td align="right" style="background:#ddd; font-weight:bold">{{ cart.get_total_price }} </td>
-                                <td style="background:#ddd; font-weight:bold"> </td>
-                            </tr>
+<!--                            <tr>-->
+<!--                                <td colspan="3" align="right"  height="30px">Have you modified your basket? Please click here to <a href="shoppingcart.html"><strong>Update</strong></a>&nbsp;&nbsp;</td>-->
+<!--                                <td align="right" style="background:#ddd; font-weight:bold"> Всего </td>-->
+<!--                                <td align="right" style="background:#ddd; font-weight:bold">{{ cart.get_total_price }} </td>-->
+<!--                                <td style="background:#ddd; font-weight:bold"> </td>-->
+<!--                            </tr>-->
 
                             {% if cart.coupon %}
-                                <tr class="subtotal">
-                                    <td>Всего</td>
-                                    <td colspan="4"></td>
-                                    <td class="num">{{ cart.get_total_price|floatformat:"2" }}</td>
+<!--                                <tr class="subtotal">-->
+<!--                                    <td>Всего</td>-->
+<!--                                    <td colspan="4"></td>-->
+<!--                                    <td class="num">{{ cart.get_total_price|floatformat:"2" }}</td>-->
+<!--                                </tr>-->
+                                <tr>
+                                    <td colspan="3" align="right"  height="30px">Всего&nbsp;&nbsp;</td>
+                                    <td align="right" style=" font-weight:bold">  </td>
+                                    <td align="right" style=" font-weight:bold">{{ cart.get_total_price }} </td>
+                                    <td style=" font-weight:bold"> </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        Купон "{{ cart.coupon.code }}"
-                                        (- {{ cart.coupon.discount }}%)
-                                    </td>
-                                    <td colspan="4"></td>
-                                    <td class="num neg">
-                                    - {{ cart.get_discount|floatformat:"2" }}
-                                    </td>
+                                    <td colspan="3" align="right"  height="30px">Купон "{{ cart.coupon.code }}"(- {{ cart.coupon.discount }}%)&nbsp;&nbsp;</td>
+                                    <td align="right" style=" font-weight:bold">   </td>
+                                    <td align="right" style=" font-weight:bold">- {{ cart.get_discount|floatformat:"2" }} </td>
+                                    <td style=" font-weight:bold"> </td>
                                 </tr>
+
+<!--                                <tr>-->
+<!--                                    <td>-->
+<!--                                        Купон "{{ cart.coupon.code }}"-->
+<!--                                        (- {{ cart.coupon.discount }}%)-->
+<!--                                    </td>-->
+<!--                                    <td colspan="4"></td>-->
+<!--                                    <td class="num neg">-->
+<!--                                    - {{ cart.get_discount|floatformat:"2" }}-->
+<!--                                    </td>-->
+<!--                                </tr>-->
                             {% endif %}
                             <tr class="total">
                                 <td>Итог</td>
-                                <td colspan="4"></td>
+                                <td colspan="4" class="num">{{ cart.get_total_price_after_discount|floatformat:"2" }} BYN</td>
                                 <td class="num">
-                                {{ cart.get_total_price_after_discount|floatformat:"2" }} BYN
+<!--                                {{ cart.get_total_price_after_discount|floatformat:"2" }} BYN-->
                                 </td>
                             </tr>
 
@@ -85,8 +98,9 @@
 <!--                        <p>Apply a coupon:</p>-->
                         <div class="coupons">
                             <form action="{% url 'coupons:apply' %}" method="post">
-                                {{ coupon_apply_form }}
-                                <input type="submit" value="Применить">
+                                <label for="id_code" class="coupons_label">Использовать купон:</label>
+                                {{ coupon_apply_form.code }}
+                                <input type="submit" value="Применить" class="apply_coupon" >
                                 {% csrf_token %}
                             </form>
                         </div>

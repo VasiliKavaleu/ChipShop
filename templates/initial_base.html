@@ -69,8 +69,8 @@
                     </li>
                     {% url 'shop:about_us' as about %}
                     <li><a href="{% url 'shop:about_us' %}" class="{% if request.path == about %}selected{% endif %}">О нас</a></li>
-    <!--                <li><a href="checkout.html" >Checkout</a></li>-->
-    <!--                <li><a href="contact.html">Contact Us</a></li>-->
+                    {% url 'shop:contacts' as contacts %}
+                    <li><a href="{% url 'shop:contacts' %}" class="{% if request.path == contacts %}selected{% endif %}">Контакты</a></li>
                 </ul>
                 <br style="clear: left" />
             </div> <!-- end of ddsmoothmenu -->
@@ -102,7 +102,7 @@
         </div> <!-- END of templatemo_main -->
 
     <div id="templatemo_footer">
-    	<p><a href="{% url 'shop:index' %}">Главная</a> | <a href="{% url 'shop:product_list' %}">Продукция</a> | <a href="{% url 'shop:about_us' %}">О нас</a>
+    	<p><a href="{% url 'shop:index' %}">Главная</a> | <a href="{% url 'shop:product_list' %}">Продукция</a> | <a href="{% url 'shop:about_us' %}">О нас</a> | <a href="{% url 'shop:contacts' %}">Контакты</a>
 		</p>
 
     	Copyright © 2020 <a href="#">vasiliy.kavaleu@gmail.com</a> </div> <!-- END of templatemo_footer -->
