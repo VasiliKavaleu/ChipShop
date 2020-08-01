@@ -1,13 +1,16 @@
 import os
 
 try:
-    from ChipShop.secret import DB_NAME, DB_USER, DB_PASSWORD, ру, SECRET_KEY
+    from ChipShop.secret import DB_NAME, DB_USER, DB_PASSWORD, DB_HOST, SECRET_KEY
 except:
     DB_NAME = os.environ.get('DB_NAME')
     DB_USER = os.environ.get('DB_USER')
     DB_PASSWORD = os.environ.get('DB_PASSWORD')
     DB_HOST = os.environ.get('DB_HOST')
     SECRET_KEY = os.environ.get('SECRET_KEY')
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -143,6 +146,14 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
+
+AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
+AWS_STORAGE_BUCKET_NAME = AWS_STORAGE_BUCKET_NAME
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 
 import dj_database_url
 
