@@ -1,7 +1,8 @@
 from django.db import models
-from shop.models import Product
 from decimal import Decimal
 from django.core.validators import MinValueValidator, MaxValueValidator
+
+from shop.models import Product
 from coupons.models import Coupon
 
 

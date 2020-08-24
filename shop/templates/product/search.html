@@ -6,7 +6,6 @@
 {% endblock %}
 
 {% block content %}
-<!--    <h3>Результат по запросу "{{ query }}":</h3>-->
     {% if products %}
         <h1 class="decor list">Результат поиска по запросу "{{ query }}":</h1>
         {% for product in products %}
@@ -23,8 +22,6 @@
                     <p>Нет наличии</p>
                 {% endif %}
                 <p class="product_price">{{ product.price }} BYN</p>
-    <!--            <a href="{% url 'cart:cart_add' product.id %}" class="addtocart"></a>-->
-    <!--            <a href="{{ product.get_absolute_url }}" class="detail"></a>-->
                 <a href="{% url 'cart:cart_add' product.id %}">
                     <img src="{% static 'images/cart2.png' %}" class="cart"  width="30 px" height ="30 px"  alt="Add to cart">
                 </a>

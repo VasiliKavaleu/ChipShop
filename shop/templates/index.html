@@ -24,7 +24,7 @@
 
     <div class="text-center"> <h1 class="decor text-center">Новые поступления</h1></div>
     {% for product in products %}
-        <a href="{% url 'cart:cart_add' product.id %}">
+        <a href="{{ product.get_absolute_url }}">
             <div class="product_box">
                 <h3>{{ product.name }}</h3>
                 {% if product.image %}

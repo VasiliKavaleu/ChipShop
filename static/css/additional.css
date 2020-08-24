@@ -268,3 +268,7 @@ a.dis {
 input.add_to_cart {
     width: 200px;
 }
+
+input#id_quantity {
+    width: 35px;
+}

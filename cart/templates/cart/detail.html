@@ -4,7 +4,6 @@
 {% block title %}Корзина{% endblock %}
 
 {% block block_cart %}
-<!--        <div id="content" class="float_r">-->
             {% if cart %}
                 <h1 class="decor cart">Корзина</h1>
                 <table width="680px" cellspacing="0" cellpadding="5">
@@ -34,7 +33,6 @@
                                                 {{ item.update_quantity_form.quantity }}
                                                 {{ item.update_quantity_form.update }}
                                                 <input type="submit" value="Добавить">
-<!--                                                    <input type="image" class="in" src="{% static 'images/update.png' %}" width="40 px" height ="40 px" border="0" alt="Submit" />-->
                                                 {% csrf_token %}
                                             </form>
                                         </td>
@@ -44,20 +42,7 @@
                                     </tr>
                                 {% endwith %}
                             {% endfor %}
-
-<!--                            <tr>-->
-<!--                                <td colspan="3" align="right"  height="30px">Have you modified your basket? Please click here to <a href="shoppingcart.html"><strong>Update</strong></a>&nbsp;&nbsp;</td>-->
-<!--                                <td align="right" style="background:#ddd; font-weight:bold"> Всего </td>-->
-<!--                                <td align="right" style="background:#ddd; font-weight:bold">{{ cart.get_total_price }} </td>-->
-<!--                                <td style="background:#ddd; font-weight:bold"> </td>-->
-<!--                            </tr>-->
-
                             {% if cart.coupon %}
-<!--                                <tr class="subtotal">-->
-<!--                                    <td>Всего</td>-->
-<!--                                    <td colspan="4"></td>-->
-<!--                                    <td class="num">{{ cart.get_total_price|floatformat:"2" }}</td>-->
-<!--                                </tr>-->
                                 <tr>
                                     <td colspan="3" align="right"  height="30px">Всего&nbsp;&nbsp;</td>
                                     <td align="right" style=" font-weight:bold">  </td>
@@ -70,32 +55,15 @@
                                     <td align="right" style=" font-weight:bold">- {{ cart.get_discount|floatformat:"2" }} </td>
                                     <td style=" font-weight:bold"> </td>
                                 </tr>
-
-<!--                                <tr>-->
-<!--                                    <td>-->
-<!--                                        Купон "{{ cart.coupon.code }}"-->
-<!--                                        (- {{ cart.coupon.discount }}%)-->
-<!--                                    </td>-->
-<!--                                    <td colspan="4"></td>-->
-<!--                                    <td class="num neg">-->
-<!--                                    - {{ cart.get_discount|floatformat:"2" }}-->
-<!--                                    </td>-->
-<!--                                </tr>-->
                             {% endif %}
                             <tr class="total">
                                 <td>Итог</td>
                                 <td colspan="4" class="num">{{ cart.get_total_price_after_discount|floatformat:"2" }} BYN</td>
                                 <td class="num">
-<!--                                {{ cart.get_total_price_after_discount|floatformat:"2" }} BYN-->
                                 </td>
                             </tr>
-
-
-
-
                         </table>
                         <div class="cleaner h20"></div>
-<!--                        <p>Apply a coupon:</p>-->
                         <div class="coupons">
                             <form action="{% url 'coupons:apply' %}" method="post">
                                 <label for="id_code" class="coupons_label">Использовать купон:</label>
@@ -105,14 +73,9 @@
                             </form>
                         </div>
 
-
-
-
                         <div style="float:right; width: 215px; ">
-
-                        <p><a href="{% url 'orders:order_create' %}">К оформлению</a></p>
-                        <p><a href="javascript:history.back()">Вернуться к покупкам</a></p>
-
+                            <p><a href="{% url 'orders:order_create' %}">К оформлению</a></p>
+                            <p><a href="javascript:history.back()">Вернуться к покупкам</a></p>
                         </div>
             {% else %}
                 <div class="empty_cart">
@@ -120,7 +83,6 @@
                     <img src="{% static 'images/empty.png' %}" class="empty" alt="empty" width="150 px" height ="150 px">
                 </div>
             {% endif %}
-<!--        </div>-->
         <div class="cleaner"></div>
 {% endblock %}
 

@@ -9,7 +9,7 @@
 {% block content %}
     <h1 class="decor list">{% if category %}Товары категории: "{{ category.name }}"{% else %}Все товары нашего каталога{% endif %}</h1>
     {% for product in products %}
-        <a href="{% url 'cart:cart_add' product.id %}">
+        <a href="{{ product.get_absolute_url }}">
             <div class="product_box">
                 <h3>{{ product.name }}</h3>
                 {% if product.image %}
